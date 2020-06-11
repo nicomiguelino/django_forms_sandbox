@@ -51,3 +51,7 @@ class Example02(View):
             request.session.update(contact_form.cleaned_data)
 
         return redirect(reverse('main:index'))
+
+class Example03(View):
+    def get(self, request):
+        return render(request, 'main/example_03.html')
