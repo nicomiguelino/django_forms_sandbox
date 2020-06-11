@@ -1,0 +1,7 @@
+<h2>Session Information</h2>
+
+<ul>
+{% for session_key, session_value in request.session.items %}
+    <li>{{ session_key }} &mdash; {{ session_value }}</li>
+{% endfor %}
+</ul>
