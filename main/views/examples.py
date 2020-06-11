@@ -2,11 +2,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.urls import reverse
 
-from .forms import ContactForm
+from main.forms import ContactForm
 
-class IndexView(View):
-    def get(self, request):
-        return render(request, 'main/index.html')
 
 class Example01(View):
     """Using the Form class to render HTML forms in templates."""
@@ -34,6 +31,7 @@ class Example01(View):
 
             return redirect(reverse('main:index'))
 
+
 class Example02(View):
     """Adding form fields manually."""
     def get(self, request):
@@ -52,6 +50,10 @@ class Example02(View):
 
         return redirect(reverse('main:index'))
 
+
 class Example03(View):
     def get(self, request):
         return render(request, 'main/example_03.html')
+
+
+__all__ = ['Example01', 'Example02', 'Example03']
