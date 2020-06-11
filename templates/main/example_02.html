@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %} Example 2 {% endblock title %}
+
+{% block content %}
+    <h1 class="mb-3">Rendering Form Fields Manually &mdash; Still Using Django Forms</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        {{ contact_form.non_field_errors }}
+
+        <p>
+            {{ contact_form.subject.errors }}
+            {{ contact_form.subject.label }} <br>
+            {{ contact_form.subject.id_for_label }} <br>
+            {{ contact_form.subject.help_text }} <br>
+            {{ contact_form.subject.field }} <br>
+            {{ contact_form.subject.label_tag }}
+            {{ contact_form.subject }}
+        </p>
+
+        <p>
+            {{ contact_form.message.errors }}
+            {{ contact_form.message.label_tag }}
+            {{ contact_form.message }}
+        </p>
+
+        <p>
+            {{ contact_form.sender.errors }}
+            {{ contact_form.sender.label_tag }}
+            {{ contact_form.sender }}
+        </p>
+
+        <p>
+            {{ contact_form.cc_myself.errors }}
+            {{ contact_form.cc_myself.label_tag }}
+            {{ contact_form.cc_myself }}
+        </p>
+
+        <input type="submit" value="Submit">
+    </form>
+{% endblock content %}

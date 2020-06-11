@@ -33,3 +33,21 @@ class Example01(View):
             request.session.update({ 'recipients': recipients })
 
             return redirect(reverse('main:index'))
+
+class Example02(View):
+    """Adding form fields manually."""
+    def get(self, request):
+        contact_form = ContactForm(label_suffix='')
+
+        return render(request, 'main/example_02.html', {
+            'contact_form': contact_form
+        })
+
+    def post(self, request):
+        contact_form = ContactForm(request.POST)
+        request.session.update({'is_last_form_submit_valid': contact_form.is_valid()})
+
+        if contact_form.is_valid():
+            request.session.update(contact_form.cleaned_data)
+
+        return redirect(reverse('main:index'))

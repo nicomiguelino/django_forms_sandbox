@@ -4,4 +4,7 @@
 {% for session_key, session_value in request.session.items %}
     <li>{{ session_key }} &mdash; {{ session_value }}</li>
 {% endfor %}
+
+    <li>request.session.session_key &mdash; {{ request.session.session_key }}</li>
+    <li>request.session.session_data &mdash; {{ request.session.session_data }}</li>
 </ul>
