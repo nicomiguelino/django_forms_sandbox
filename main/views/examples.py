@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.urls import reverse
 
-from main.forms import ContactForm
+from main.forms import ContactForm, ContactFormSet
 
 
 class Example01(View):
@@ -52,8 +52,20 @@ class Example02(View):
 
 
 class Example03(View):
+    INITIAL_CONTACT_FORMSET_VALUES = [
+        {
+            'subject': 'The first contact form',
+            'message': 'The first message. Weee!',
+            'sender': 'lydia.night@example.com',
+            'cc_myself': True
+        }
+    ]
+
     def get(self, request):
-        return render(request, 'main/example_03.html')
+        formset = ContactFormSet(initial=INITIAL_CONTACT_FORMSET_VALUES)
+        return render(request, 'main/example_03.html', {
+            'formset': formset
+        })
 
 
 __all__ = ['Example01', 'Example02', 'Example03']
